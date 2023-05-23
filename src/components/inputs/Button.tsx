@@ -2,7 +2,7 @@ import React from "react";
 import "../css/main.css";
 import styled from "styled-components";
 import { getThemeValue } from "../ThemeProvider";
-import { InputAttributes } from "./Input";
+import { AccentFlag, InputAttributes } from "./Input";
 
 export type ButtonProps = InputAttributes<
   HTMLButtonElement | HTMLAnchorElement
@@ -15,7 +15,14 @@ export type ButtonProps = InputAttributes<
 };
 
 export const Button = (props: ButtonProps) => {
-  return <ButtonElement as={props.href ? "a" : "button"} {...props} />;
+  const accent = props.accent;
+  return (
+    <div>
+      <AccentFlag accent={accent} />
+      <ButtonElement {...props} />
+    </div>
+    
+  );
 };
 
 const ButtonElement = styled.button<ButtonProps>`
